@@ -30,7 +30,7 @@
             android:id="@+id/txtView_main"
             android:layout_marginTop="30dp"
             android:textColor="@color/black"
-            android:text="Budget Tracker Software"
+            android:text="Budget Tracker"
             android:textAlignment="center"
             android:layout_below="@id/img_logo"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
