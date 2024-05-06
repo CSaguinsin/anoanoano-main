@@ -3,10 +3,13 @@ package com.example.budgettracker;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExportActivity extends AppCompatActivity {
-
+    private FirebaseAuth authProfile;
     private DatabaseReference goalsRef;
     private List<Goal> goalsList = new ArrayList<>();
     private List<Expense> expenseList = new ArrayList<>();
@@ -121,6 +124,64 @@ public class ExportActivity extends AppCompatActivity {
                 Log.e("S", "Failed to retrieve expenses: " + databaseError.getMessage());
             }
         });
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        //inflate menu items
+        getMenuInflater().inflate(R.menu.common_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home){
+            NavUtils.navigateUpFromSameTask(ExportActivity.this);
+            finish();
+        } else if (id == R.id.menu_refresh){
+            startActivity(getIntent());
+            finish();
+            overridePendingTransition(0,0);
+        } else if (id == R.id.menu_update_profile) {
+            Intent intent = new Intent (ExportActivity.this, UpdateProfile.class);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.menu_profile) {
+            Intent intent = new Intent (ExportActivity.this, ProfileActivity.class);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.menu_update_email) {
+            Intent intent = new Intent (ExportActivity.this, UpdateEmail.class);
+            startActivity(intent);
+        } else if (id == R.id.menu_change_pass) {
+            Intent intent = new Intent (ExportActivity.this, ChangePassword.class);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.menu_delete) {
+            Intent intent = new Intent (ExportActivity.this, DeleteUser.class);
+            startActivity(intent);
+        } else if (id == R.id.menu_home) {
+            Intent intent = new Intent(ExportActivity.this, DashboardActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.menu_goals) {
+            Intent intent = new Intent(ExportActivity.this, GoalActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.menu_export) {
+            Intent intent = new Intent(ExportActivity.this, ExportActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.menu_logout) {
+            authProfile.signOut();
+            Toast.makeText(ExportActivity.this, "Logged Out", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(ExportActivity.this, MainActivity.class);
+
+            //clear stack instance & close activity
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(ExportActivity.this, "Something went wrong!", Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

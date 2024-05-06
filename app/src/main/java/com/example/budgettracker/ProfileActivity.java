@@ -214,6 +214,9 @@ public class ProfileActivity extends AppCompatActivity {
         } else if (id == R.id.menu_goals) {
             Intent intent = new Intent(ProfileActivity.this, GoalActivity.class);
             startActivity(intent);
+        } else if (id == R.id.menu_export) {
+            Intent intent = new Intent(ProfileActivity.this, ExportActivity.class);
+            startActivity(intent);
         } else if (id == R.id.menu_logout) {
             authProfile.signOut();
             Toast.makeText(ProfileActivity.this, "Logged Out", Toast.LENGTH_LONG).show();

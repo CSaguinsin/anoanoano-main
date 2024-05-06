@@ -204,6 +204,9 @@ public class UploadProfilePic extends AppCompatActivity {
         } else if (id == R.id.menu_home) {
             Intent intent = new Intent(UploadProfilePic.this, DashboardActivity.class);
             startActivity(intent);
+        }else if (id == R.id.menu_export) {
+            Intent intent = new Intent(UploadProfilePic.this, ExportActivity.class);
+            startActivity(intent);
         } else if (id == R.id.menu_logout) {
             authProfile.signOut();
             Toast.makeText(UploadProfilePic.this, "Logged Out", Toast.LENGTH_LONG).show();

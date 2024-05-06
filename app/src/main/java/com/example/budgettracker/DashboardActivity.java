@@ -209,6 +209,9 @@ public class DashboardActivity extends AppCompatActivity {
             Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
             startActivity(intent);
             return true;
+        }else if (id == R.id.menu_export) {
+            Intent intent = new Intent(DashboardActivity.this, ExportActivity.class);
+            startActivity(intent);
         } else if (id == R.id.menu_logout) {
             authProfile.signOut();
             Toast.makeText(DashboardActivity.this, "Logged Out", Toast.LENGTH_LONG).show();

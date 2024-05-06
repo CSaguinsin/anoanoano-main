@@ -295,7 +295,10 @@ public class UpdateProfile extends AppCompatActivity {
         }else if (id == R.id.menu_goals) {
             Intent intent = new Intent(UpdateProfile.this, GoalActivity.class);
             startActivity(intent);
-        }else if (id == R.id.menu_logout) {
+        } else if (id == R.id.menu_export) {
+            Intent intent = new Intent(UpdateProfile.this, ExportActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.menu_logout) {
             authProfile.signOut();
             Toast.makeText(UpdateProfile.this, "Logged Out", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(UpdateProfile.this, MainActivity.class);
