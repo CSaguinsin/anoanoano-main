@@ -234,6 +234,7 @@ public class AddExpenseActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         // Error saving expense
                         Toast.makeText(AddExpenseActivity.this, "Failed to add expense: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        throw new RuntimeException(e);
                     }
                 });
     }

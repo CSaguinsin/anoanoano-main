@@ -1,11 +1,5 @@
 package com.example.budgettracker;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +15,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -135,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     //get instance of current user
                     FirebaseUser firebaseUser = authProfile.getCurrentUser();
+                    Log.i("LOGIN", String.valueOf(firebaseUser));
 
                     //check if email is verified
                     if (firebaseUser.isEmailVerified()){
@@ -192,6 +193,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         if (authProfile.getCurrentUser() != null){
+            Log.i("LOGIN", String.valueOf(authProfile.getCurrentUser()));
             Toast.makeText(LoginActivity.this, "Already Logged in!", Toast.LENGTH_LONG).show();
             startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
             finish();
