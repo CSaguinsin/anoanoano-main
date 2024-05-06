@@ -30,13 +30,13 @@
             android:id="@+id/txtView_main"
             android:layout_marginTop="30dp"
             android:textColor="@color/black"
-            android:text="Budget Tracker Software"
+            android:text="Export"
             android:textAlignment="center"
             android:layout_below="@id/img_logo"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_export_expenses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtView_main"
@@ -44,26 +44,20 @@
             android:layout_marginTop="70dp"
             android:layout_marginRight="70dp"
             android:backgroundTint="#8BC34A"
-            android:text="Login" />
+            android:text="Export Expenses" />
 
-        <TextView
+        <Button
+            android:id="@+id/btn_export_goals"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtView_reg"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"
-            android:text="Don't have an account?"
-            android:textAlignment="center"
-            android:layout_below="@id/btn_login"/>
+            android:layout_below="@id/txtView_main"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginRight="70dp"
+            android:backgroundTint="#8BC34A"
+            android:text="Export Goals" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtView_register"
-            android:textColor="@color/blue"
-            android:text="@string/register"
-            android:textAlignment="center"
-            android:layout_below="@id/txtView_reg"/>
+
 
     </RelativeLayout>
 

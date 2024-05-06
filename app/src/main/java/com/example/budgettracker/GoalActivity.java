@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +34,8 @@ public class GoalActivity extends AppCompatActivity {
     private Calendar selectedDate;
     private DatabaseReference goalsRef;
     private List<Goal> goalsList;
-
+    private DatabaseReference expensesRef;
+    private HashMap<String, Double> categoriesTotal = new HashMap<String, Double>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,7 @@ public class GoalActivity extends AppCompatActivity {
 
         // Initialize Firebase database reference
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        expensesRef = database.getReference("expenses");
         goalsRef = database.getReference("goals");
         goalNameEditText = findViewById(R.id.editTextGoalName);
         targetAmountEditText = findViewById(R.id.editTextTargetAmount);
@@ -54,7 +57,6 @@ public class GoalActivity extends AppCompatActivity {
         goalAdapter = new GoalAdapter(goalsList);
         goalsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         goalsRecyclerView.setAdapter(goalAdapter);
-
         // Set up category spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.expense_categories, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -74,6 +76,8 @@ public class GoalActivity extends AppCompatActivity {
             }
         });
 
+        List<Expense> expenseList = new ArrayList<>();
+        retrieveExpenses(expenseList);
         // Load goals from Firebase
         loadGoals();
     }
@@ -171,7 +175,9 @@ public class GoalActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Goal goal = dataSnapshot.getValue(Goal.class);
                     if (goal != null) {
-                        goal.setProgress(80);
+                        if(categoriesTotal.containsKey(goal.getCategory())){
+                            goal.setCurrentAmount(categoriesTotal.get(goal.getCategory()));
+                        }
                         goalsList.add(goal);
                     }
                 }
@@ -227,6 +233,9 @@ public class GoalActivity extends AppCompatActivity {
         } else if (id == R.id.menu_goals) {
             Intent intent = new Intent(GoalActivity.this, GoalActivity.class);
             startActivity(intent);
+        } else if (id == R.id.menu_export) {
+            Intent intent = new Intent(GoalActivity.this, ExportActivity.class);
+            startActivity(intent);
         } else if (id == R.id.menu_logout) {
             authProfile.signOut();
             Toast.makeText(GoalActivity.this, "Logged Out", Toast.LENGTH_LONG).show();
@@ -241,4 +250,49 @@ public class GoalActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void retrieveExpenses(final List<Expense> expenseList) {
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser == null) {
+            // Handle not signed in user
+            return;
+        }
+
+        DatabaseReference userExpensesRef = expensesRef.child(currentUser.getUid());
+        userExpensesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot expenseSnapshot : dataSnapshot.getChildren()) {
+                    Expense expense = expenseSnapshot.getValue(Expense.class);
+                    if (expense != null) {
+                        expenseList.add(expense);
+                    }
+                }
+                // Now you have all expenses in expenseList
+                // Do whatever you need with the list, like updating UI
+// Iterate over the list of expenses
+                for (Expense expense : expenseList) {
+                    String category = expense.getCategory();
+                    double amount = expense.getAmount();
+
+                    // If the category already exists in the map, add the amount to its sum
+                    if (categoriesTotal.containsKey(category)) {
+                        double currentSum = categoriesTotal.get(category);
+                        categoriesTotal.put(category, currentSum + amount);
+                    } else {
+                        // If the category doesn't exist, add it to the map with the amount as its sum
+                        categoriesTotal.put(category, amount);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle the error
+                Log.e("S", "Failed to retrieve expenses: " + databaseError.getMessage());
+            }
+        });
+    }
+
 }

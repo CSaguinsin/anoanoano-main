@@ -3,6 +3,7 @@ package com.example.budgettracker;
 public class Goal {
     private String goalName;
     private double targetAmount;
+    private double currentAmount;
     private String selectedDate;
     private String category;
     private double progress;
@@ -25,13 +26,16 @@ public class Goal {
     public void setGoalName(String goalName) {
         this.goalName = goalName;
     }
-
+    public double getCurrentAmount() {return currentAmount; }
     public double getTargetAmount() {
         return targetAmount;
     }
 
     public void setTargetAmount(double targetAmount) {
         this.targetAmount = targetAmount;
+    }
+    public void setCurrentAmount(double currentAmount) {
+        this.currentAmount = currentAmount;
     }
 
     public String getSelectedDate() {
@@ -52,7 +56,7 @@ public class Goal {
 
 
     public double getProgress() {
-        return progress;
+        return getCurrentAmount()/getTargetAmount();
     }
 
     public void setProgress(double progress) {

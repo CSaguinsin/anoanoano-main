@@ -15,6 +15,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
         public TextView targetAmountTextView;
         public TextView dateTextView;
         public TextView categoryTextView;
+        public TextView progressTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -22,6 +23,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
             targetAmountTextView = itemView.findViewById(R.id.targetAmountTextView);
             dateTextView = itemView.findViewById(R.id.dateTextView);
             categoryTextView = itemView.findViewById(R.id.categoryTextView);
+            progressTextView = itemView.findViewById(R.id.progressTextView);
         }
     }
 
@@ -43,6 +45,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
         holder.targetAmountTextView.setText(String.format("Target Amount: PHP %.2f", goal.getTargetAmount()));
         holder.dateTextView.setText("Date: " + goal.getSelectedDate());
         holder.categoryTextView.setText(goal.getCategory());
+        holder.progressTextView.setText("Progress: " + goal.getCurrentAmount() + "/" + goal.getTargetAmount() + " (" + String.format("%.2f%%", goal.getProgress())+")");
     }
 
     @Override

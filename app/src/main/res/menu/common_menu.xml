@@ -26,6 +26,8 @@
 
     <item android:title="Goals"
         android:id="@+id/menu_goals"/>
+    <item android:title="Export"
+        android:id="@+id/menu_export"/>
 
     <item android:title="Logout"
         android:id="@+id/menu_logout"/>
