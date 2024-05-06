@@ -56,7 +56,7 @@ public class Goal {
 
 
     public double getProgress() {
-        return getCurrentAmount()/getTargetAmount();
+        return getCurrentAmount()/getTargetAmount()*100;
     }
 
     public void setProgress(double progress) {
