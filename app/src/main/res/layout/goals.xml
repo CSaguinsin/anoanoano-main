@@ -1,0 +1,119 @@
+<!-- goals.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/mainbg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:text="Set Goal"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/editTextGoalName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/input"
+                android:hint="Goal Name"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#afafaf" />
+
+            <EditText
+                android:id="@+id/editTextTargetAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/input"
+                android:hint="Target Amount (PHP)"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#afafaf" />
+
+            <!-- Horizontal LinearLayout for Button and TextView -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/buttonPickDate"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/buttons"
+                    android:padding="15dp"
+                    android:text="Pick Date"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/textViewSelectedDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/input"
+                    android:hint="mm/dd/yy"
+                    android:padding="15dp"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textColorHint="#afafaf" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinnerCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/input"
+                android:entries="@array/expense_categories"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+            <Button
+                android:id="@+id/buttonAddGoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/buttons"
+                android:backgroundTint="#2d2d2d"
+                android:text="Add Goal"
+                android:textColor="@color/white" />
+
+            <!-- RecyclerView for List of Goals -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/goalsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

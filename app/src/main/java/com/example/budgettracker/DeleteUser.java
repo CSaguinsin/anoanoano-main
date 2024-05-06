@@ -267,6 +267,9 @@ public class DeleteUser extends AppCompatActivity {
             Intent intent = new Intent (DeleteUser.this, DeleteUser.class);
             startActivity(intent);
             finish();
+        }else if (id == R.id.menu_goals) {
+            Intent intent = new Intent(DeleteUser.this, GoalActivity.class);
+            startActivity(intent);
         } else if (id == R.id.menu_home) {
             Intent intent = new Intent(DeleteUser.this, DashboardActivity.class);
             startActivity(intent);

@@ -198,6 +198,9 @@ public class UploadProfilePic extends AppCompatActivity {
             Intent intent = new Intent (UploadProfilePic.this, DeleteUser.class);
             startActivity(intent);
             finish();
+        }else if (id == R.id.menu_goals) {
+            Intent intent = new Intent(UploadProfilePic.this, GoalActivity.class);
+            startActivity(intent);
         } else if (id == R.id.menu_home) {
             Intent intent = new Intent(UploadProfilePic.this, DashboardActivity.class);
             startActivity(intent);

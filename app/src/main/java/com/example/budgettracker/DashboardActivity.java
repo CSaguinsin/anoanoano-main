@@ -202,6 +202,9 @@ public class DashboardActivity extends AppCompatActivity {
         } else if (id == R.id.menu_delete) {
             Intent intent = new Intent(DashboardActivity.this, DeleteUser.class);
             startActivity(intent);
+        } else if (id == R.id.menu_goals) {
+            Intent intent = new Intent(DashboardActivity.this, GoalActivity.class);
+            startActivity(intent);
         } else if (id == R.id.menu_home) {
             Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
             startActivity(intent);

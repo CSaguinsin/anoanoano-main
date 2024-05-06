@@ -211,6 +211,9 @@ public class ChangePassword extends AppCompatActivity {
             Intent intent = new Intent (ChangePassword.this, DeleteUser.class);
             startActivity(intent);
             finish();
+        }else if (id == R.id.menu_goals) {
+            Intent intent = new Intent(ChangePassword.this, GoalActivity.class);
+            startActivity(intent);
         } else if (id == R.id.menu_home) {
             Intent intent = new Intent(ChangePassword.this, DashboardActivity.class);
             startActivity(intent);
