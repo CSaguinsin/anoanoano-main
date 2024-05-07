@@ -1,33 +1,23 @@
 package com.example.budgettracker;
 
+import android.content.Intent;
 import android.os.Bundle;
-<<<<<<< Updated upstream
-
-=======
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
->>>>>>> Stashed changes
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
-<<<<<<< Updated upstream
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-=======
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,10 +25,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
->>>>>>> Stashed changes
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -58,8 +44,7 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-<<<<<<< Updated upstream
-=======
+
         ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<>(DashboardActivity.this, android.R.layout.simple_list_item_1, myArrayList);
 
         myListView = (ListView) findViewById(R.id.listview1);
@@ -98,21 +83,16 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
 
->>>>>>> Stashed changes
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle("Dashboard");
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-<<<<<<< Updated upstream
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recycler1);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-=======
         // Initialize the swipeContainer
-
->>>>>>> Stashed changes
 
         // Initialize Firebase
         mbase = FirebaseDatabase.getInstance().getReference();
@@ -137,11 +117,9 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     @Override
-<<<<<<< Updated upstream
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
-=======
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.common_menu, menu);
         return super.onCreateOptionsMenu(menu);

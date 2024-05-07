@@ -37,7 +37,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/mainbg">
->>>>>>> Stashed changes
 
         <TextView
             android:id="@+id/textViewTitle"
@@ -64,19 +63,16 @@
             android:id="@+id/buttonAddExpense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-<<<<<<< Updated upstream
             android:layout_margin="5dp"
-            android:background="@drawable/buttons"
             android:backgroundTint="#2d2d2d"
             android:text="Add Expenses"
             android:textColor="@color/white"
             tools:layout_editor_absoluteX="21dp"
-            tools:layout_editor_absoluteY="182dp" />
-=======
+            tools:layout_editor_absoluteY="182dp"
             android:orientation="vertical"
             android:padding="16dp"
             android:visibility="visible"
-            android:background="@drawable/border">
+            android:background="@drawable/border"/>
 
             <TextView
                 android:id="@+id/dashboard_heading"
@@ -103,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/listview1"/>
->>>>>>> Stashed changes
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler1"
