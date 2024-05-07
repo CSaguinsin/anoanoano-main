@@ -32,6 +32,15 @@
                 android:value=".DashboardActivity" />
         </activity>
         <activity
+            android:name=".MainDashboard"
+            android:label="Dashboard"
+            android:parentActivityName=".MainActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DashboardActivity" />
+        </activity>
+        <activity
             android:name=".AddExpenseActivity"
             android:exported="false">
         <meta-data

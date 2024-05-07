@@ -6,8 +6,14 @@
         android:icon="@drawable/ic_refresh_white"
         android:id="@+id/menu_refresh" />
 
-    <item android:title="Home"
+    <item android:title="Dashboard"
+        android:id="@+id/menu_main_dashboard"/>
+
+    <item android:title="Add Expense"
         android:id="@+id/menu_home"/>
+
+    <item android:title="Goals"
+        android:id="@+id/menu_goals"/>
 
     <item android:title="User Profile"
         android:id="@+id/menu_profile"/>
@@ -24,8 +30,6 @@
     <item android:title="Delete Profile"
         android:id="@+id/menu_delete"/>
 
-    <item android:title="Goals"
-        android:id="@+id/menu_goals"/>
     <item android:title="Export"
         android:id="@+id/menu_export"/>
 

@@ -169,6 +169,10 @@ public class ExportActivity extends AppCompatActivity {
         } else if (id == R.id.menu_export) {
             Intent intent = new Intent(ExportActivity.this, ExportActivity.class);
             startActivity(intent);
+        } else if (id == R.id.menu_main_dashboard) {
+            Intent intent = new Intent(ExportActivity.this, MainDashboard.class);
+            startActivity(intent);
+
         } else if (id == R.id.menu_logout) {
             authProfile.signOut();
             Toast.makeText(ExportActivity.this, "Logged Out", Toast.LENGTH_LONG).show();

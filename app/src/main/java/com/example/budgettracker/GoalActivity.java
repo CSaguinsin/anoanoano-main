@@ -40,7 +40,6 @@ public class GoalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.goals);
-
         // Initialize Firebase database reference
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         expensesRef = database.getReference("expenses");
@@ -61,7 +60,6 @@ public class GoalActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.expense_categories, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
-
         pickDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -236,11 +234,16 @@ public class GoalActivity extends AppCompatActivity {
         } else if (id == R.id.menu_export) {
             Intent intent = new Intent(GoalActivity.this, ExportActivity.class);
             startActivity(intent);
+        } else if (id == R.id.menu_main_dashboard) {
+            Intent intent = new Intent(GoalActivity.this, MainDashboard.class);
+            startActivity(intent);
+
         } else if (id == R.id.menu_logout) {
             authProfile.signOut();
             Toast.makeText(GoalActivity.this, "Logged Out", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(GoalActivity.this, MainActivity.class);
-
+            
+            
             //clear stack instance & close activity
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);

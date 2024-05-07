@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,7 +42,7 @@ public class AddExpenseActivity extends AppCompatActivity {
     private TextView textViewSelectedDate;
     private Button cancelButton;
     private Button addExpenseButton;
-
+    private FirebaseAuth authProfile;
     private Calendar selectedDate;
     private DatabaseReference expensesRef;
 
@@ -236,5 +239,66 @@ public class AddExpenseActivity extends AppCompatActivity {
                         Toast.makeText(AddExpenseActivity.this, "Failed to add expense: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.common_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            NavUtils.navigateUpFromSameTask(AddExpenseActivity.this);
+            finish();
+        } else if (id == R.id.menu_refresh) {
+            startActivity(getIntent());
+            overridePendingTransition(0, 0);
+        } else if (id == R.id.menu_update_profile) {
+            Intent intent = new Intent(AddExpenseActivity.this, UpdateProfile.class);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.menu_profile) {
+            Intent intent = new Intent(AddExpenseActivity.this, ProfileActivity.class);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.menu_update_email) {
+            Intent intent = new Intent(AddExpenseActivity.this, UpdateEmail.class);
+            startActivity(intent);
+        } else if (id == R.id.menu_change_pass) {
+            Intent intent = new Intent(AddExpenseActivity.this, ChangePassword.class);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.menu_delete) {
+            Intent intent = new Intent(AddExpenseActivity.this, DeleteUser.class);
+            startActivity(intent);
+        } else if (id == R.id.menu_goals) {
+            Intent intent = new Intent(AddExpenseActivity.this, GoalActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.menu_home) {
+            Intent intent = new Intent(AddExpenseActivity.this, ProfileActivity.class);
+            startActivity(intent);
+            return true;
+        }else if (id == R.id.menu_export) {
+            Intent intent = new Intent(AddExpenseActivity.this, ExportActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.menu_main_dashboard) {
+            Intent intent = new Intent(AddExpenseActivity.this, MainDashboard.class);
+            startActivity(intent);
+
+        }  else if (id == R.id.menu_logout) {
+            authProfile.signOut();
+            Toast.makeText(AddExpenseActivity.this, "Logged Out", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(AddExpenseActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(AddExpenseActivity.this, "Something went wrong!", Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -210,6 +210,10 @@ public class UpdateEmail extends AppCompatActivity {
         }else if (id == R.id.menu_export) {
             Intent intent = new Intent(UpdateEmail.this, ExportActivity.class);
             startActivity(intent);
+        }else if (id == R.id.menu_main_dashboard) {
+            Intent intent = new Intent(UpdateEmail.this, MainDashboard.class);
+            startActivity(intent);
+
         } else if (id == R.id.menu_logout) {
             authProfile.signOut();
             Toast.makeText(UpdateEmail.this, "Logged Out", Toast.LENGTH_LONG).show();
