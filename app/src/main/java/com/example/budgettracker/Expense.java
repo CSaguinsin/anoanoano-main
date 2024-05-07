@@ -20,6 +20,7 @@ public class Expense {
     private String note;
     private String date;
 
+
     public double getAmount() {
         return amount;
     }

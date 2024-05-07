@@ -209,7 +209,7 @@ public class ProfileActivity extends AppCompatActivity {
             Intent intent = new Intent (ProfileActivity.this, DeleteUser.class);
             startActivity(intent);
         } else if (id == R.id.menu_home) {
-            Intent intent = new Intent(ProfileActivity.this, DashboardActivity.class);
+            Intent intent = new Intent(ProfileActivity.this, MainDashboard.class);
             startActivity(intent);
         } else if (id == R.id.menu_logout) {
             authProfile.signOut();

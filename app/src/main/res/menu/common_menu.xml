@@ -24,6 +24,18 @@
     <item android:title="Delete Profile"
         android:id="@+id/menu_delete"/>
 
+<<<<<<< Updated upstream
+=======
+    <item android:title="Goals"
+        android:id="@+id/menu_goals"/>
+
+    <item android:title="Add Expense"
+        android:id="@+id/add_expense"/>
+
+    <item android:title="Export"
+        android:id="@+id/menu_export"/>
+
+>>>>>>> Stashed changes
     <item android:title="Logout"
         android:id="@+id/menu_logout"/>
 

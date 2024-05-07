@@ -4,5 +4,5 @@
     <string name="forgot_password"><u>Forgot password?</u></string>
     <string name="email"><u>Email</u></string>
     <string name="display_profile"><u>Display Profile</u></string>
-    <string name="add_expense">Add Expense</string>
+    <string name="add_expense">Add Expenses</string>
 </resources>

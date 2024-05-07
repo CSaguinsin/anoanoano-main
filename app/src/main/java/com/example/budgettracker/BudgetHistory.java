@@ -56,4 +56,8 @@ public class BudgetHistory {
     {
         this.note = note;
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
