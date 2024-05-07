@@ -4,7 +4,8 @@
     android:id="@+id/swipeContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible">
+    android:visibility="visible"
+    android:background="@drawable/mainbg">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,6 +31,13 @@
                 android:text="@string/add_expense"
                 android:textColor="@android:color/white"
                 android:visibility="visible" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HAHAHAHAHAH"
+                android:textSize="50dp"/>
+
 
         </LinearLayout>
     </ScrollView>

@@ -34,18 +34,18 @@
         <activity
             android:name=".MainDashboard"
             android:label="Dashboard"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".MainDashboard"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DashboardActivity" />
+                android:value=".MainDashboard" />
         </activity>
         <activity
             android:name=".AddExpenseActivity"
             android:exported="false">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value=".DashboardActivity" />
+            android:value=".MainDashboard" />
         </activity>
         <activity
             android:name=".DeleteUser"
@@ -112,17 +112,17 @@
         </activity>
         <activity
             android:name=".GoalActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainDashboard">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MainDashboard" />
         </activity>
         <activity
             android:name=".ExportActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainDashboard">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MainDashboard" />
         </activity>
         <activity
             android:name=".MainActivity"
